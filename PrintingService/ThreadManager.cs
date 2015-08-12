@@ -1,6 +1,4 @@
-﻿using domain;
-using service.nwe.config;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,8 +7,23 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PrintingWindowsService
+namespace PrintingService
 {
+    public abstract class IPrintManager
+    {
+
+        public virtual void Start() { }
+    }
+
+
+    public interface IPrintService
+    {
+        bool GenerateDocument(PrintForm form);
+
+        bool SendToPrint(PrintForm form, string printerName = null);
+    }
+
+
     public class PrintingThreadManager : IPrintManager
     {
 
@@ -19,11 +32,7 @@ namespace PrintingWindowsService
         {
             Task.Run(() =>
             {
-                //Startup.initialization();
-
-                //// Preload static data
-                //Preloader loader = new Preloader();
-                //loader.execute();
+               
 
 
                 FetchProcess = new Thread(FetchFromApiProcess) { Priority = ThreadPriority.Normal, IsBackground = true };
@@ -39,8 +48,8 @@ namespace PrintingWindowsService
 
         public override void Start()
         {
-            
-            
+
+
         }
 
         #region Thread Loops Process
@@ -50,12 +59,12 @@ namespace PrintingWindowsService
         /// </summary>
         private static async void FetchFromApiProcess()
         {
-            
+
 
             //mientras esta recuperando de la web Api los documentos a imprimir
 
             if (await GetNext() == null) PrintFormManager.ResetStateForms();
-            
+
             while (IsRunning)
             {
                 await GetNext();
@@ -65,7 +74,7 @@ namespace PrintingWindowsService
             }
         }
 
-        private static async  Task<PrintForm> GetNext()
+        private static async Task<PrintForm> GetNext()
         {
             var document = await PrintFormManager.GetNextForm();
             if (document != null && !DocumentBuildStack.ContainsKey(document.Id)) DocumentBuildStack.TryAdd(document.Id, document);
@@ -79,7 +88,7 @@ namespace PrintingWindowsService
         /// </summary>
         private static async void PrintingProcess()
         {
-            
+
 
             while (IsRunning)
             {
@@ -87,7 +96,7 @@ namespace PrintingWindowsService
 
                 if (document.Value != null)
                 {
-                     
+
                     var service = new PrintManagerService();
 
                     if (service.SendToPrint(document.Value, "Enviar a OneNote 2013"))
@@ -100,7 +109,7 @@ namespace PrintingWindowsService
                         PrintForm form;
                         DocumentPrintStack.TryRemove(document.Key, out form);
 
-                       
+
                     }
 
                 }
@@ -133,7 +142,7 @@ namespace PrintingWindowsService
                         DocumentPrintStack.TryAdd(document.Key, document.Value);
                     }
                 }
-                else  Thread.Sleep(TimeSpan.FromSeconds(SleepingTime));
+                else Thread.Sleep(TimeSpan.FromSeconds(SleepingTime));
 
             }
         }
@@ -163,3 +172,4 @@ namespace PrintingWindowsService
         #endregion  
     }
 }
+ 

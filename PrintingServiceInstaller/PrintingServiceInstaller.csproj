@@ -122,9 +122,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PrintingWindowsService\PrintingWindowsService.csproj">
-      <Project>{75726774-f46e-4e21-b949-478d96346ac0}</Project>
-      <Name>PrintingWindowsService</Name>
+    <ProjectReference Include="..\PrintingService\PrintingService.csproj">
+      <Project>{4fff42e9-8891-4e09-9fb9-f1977541dbb7}</Project>
+      <Name>PrintingService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintingServiceInstaller", "PrintingServiceInstaller\PrintingServiceInstaller.csproj", "{AC9908A7-A0BF-44C2-B039-4D0830A887B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintingWindowsService", "PrintingWindowsService\PrintingWindowsService.csproj", "{75726774-F46E-4E21-B949-478D96346AC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintingService", "PrintingService\PrintingService.csproj", "{4FFF42E9-8891-4E09-9FB9-F1977541DBB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{AC9908A7-A0BF-44C2-B039-4D0830A887B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC9908A7-A0BF-44C2-B039-4D0830A887B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC9908A7-A0BF-44C2-B039-4D0830A887B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{75726774-F46E-4E21-B949-478D96346AC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{75726774-F46E-4E21-B949-478D96346AC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{75726774-F46E-4E21-B949-478D96346AC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{75726774-F46E-4E21-B949-478D96346AC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FFF42E9-8891-4E09-9FB9-F1977541DBB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FFF42E9-8891-4E09-9FB9-F1977541DBB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FFF42E9-8891-4E09-9FB9-F1977541DBB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FFF42E9-8891-4E09-9FB9-F1977541DBB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
